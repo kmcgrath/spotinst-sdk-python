@@ -1,0 +1,15 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: python27
+    image: python:2.7
+    commands:
+      - pip install coveralls PyYaml requests mock
+      - coverage run --source spotinst_sdk setup.py test
+
+  - name: python36
+    image: python:3.6
+    commands:
+      - pip install coveralls PyYaml requests mock
+      - coverage run --source spotinst_sdk setup.py test
